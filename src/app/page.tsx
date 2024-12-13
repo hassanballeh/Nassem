@@ -1,101 +1,100 @@
-import Image from "next/image";
-
-export default function Home() {
+import TestimonialsSlider from "@/components/Testimonials ";
+import Hero from "../components/Hero";
+import { Minus, CircleCheckBig } from "lucide-react";
+interface Featuers {
+  text: string;
+}
+interface HomeProps {
+  featuers1?: Featuers[];
+  featuers2?: Featuers[];
+}
+const Home: React.FC<HomeProps> = ({
+  featuers1 = [
+    { text: "Highly Professional Staff" },
+    { text: "100% Satisfaction Guarantee" },
+    { text: "Quality Control System" },
+    { text: "Price match promise" },
+    { text: "Safety recommendations" },
+  ],
+  featuers2 = [
+    { text: "Accourate Testing Process" },
+    { text: "Unrivalle Workmanship" },
+    { text: "Timely Delivery" },
+    { text: "Follow-up service calls" },
+    { text: "Strong community reputation" },
+  ],
+}) => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+    <div className="flex flex-col gap-24">
+      <Hero />
+      <div className="max-w-7xl lg:mx-auto mx-5 px-5  flex lg:flex-row flex-col gap-20">
+        <div className="lg:block hidden">
+          <img
+            className="lg:w-[700px]"
+            src="./images/technical-repairs-400x320.webp"
+            alt="technical-repairs"
+          />
+        </div>
+        <div className="flex  flex-col  gap-4">
+          <div className="flex gap-1 text-secondary text-2xl items-center  ">
+            <Minus />
+            <h2>Welcome to Our workshop</h2>
+          </div>
+          <h1 className="text-primary text-4xl font-black">
+            Committed to Give High Quality Repairing & Services
+          </h1>
+          <p className="mb-5 text-[#797979] text-base">
+            Beat the Abu Dhabi heat with our professional AC maintenance and
+            repair services. Our certified technicians ensure your vehicle's
+            cooling system performs at its best when you need it most.
+          </p>
+          <p className="text-[#797979] text-base">
+            Trust our experienced mechanics to keep your vehicle running
+            smoothly. We combine technical expertise with state-of-the-art
+            equipment to deliver superior mechanical repairs.
+          </p>
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/services"
+            className="relative w-[200px] text-center text-secondary  border-2 border-primary rounded px-4 py-2 inline cursor-pointer text-base font-bold before:bg-primary hover:rounded-b-none before:absolute before:-bottom-0 before:-left-0  before:block before:h-[4px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+            View All Services
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+      <div className="max-w-7xl lg:mx-auto mx-5 px-5">
+        <h1 className="text-primary text-4xl font-black mb-10 md:text-center text-left">
+          Why Choose Us
+        </h1>
+        <div className="flex md:flex-row flex-col md:gap-40 gap-10">
+          <ul className="flex flex-col gap-10">
+            {featuers1.map((cur, index) => (
+              <div key={index} className="flex gap-2">
+                <span className="text-secondary">
+                  <CircleCheckBig />
+                </span>
+                <p className="text-xl text-[#797979]">{cur.text}</p>
+              </div>
+            ))}
+          </ul>
+          <ul className="flex flex-col gap-10">
+            {featuers2.map((cur, index) => (
+              <div key={index} className="flex gap-2">
+                <span className="text-secondary">
+                  <CircleCheckBig />
+                </span>
+                <p className="text-xl  text-[#797979]">{cur.text}</p>
+              </div>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className="max-w-7xl lg:mx-auto mx-5 px-5">
+        <h1 className="text-primary text-4xl font-black mb-10 md:text-center text-left">
+          Testimonials
+        </h1>
+        <TestimonialsSlider />
+      </div>
     </div>
   );
-}
+};
+export default Home;

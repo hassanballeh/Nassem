@@ -6,47 +6,53 @@ import { Autoplay } from "swiper/modules";
 import Link from "next/link";
 import "swiper/css";
 
-interface NavLink {
+// Types moved outside component
+type NavLink = {
   href: string;
   label: string;
-}
+};
 
-interface SlideContent {
+type SlideContent = {
   image: string;
   primarySlogan: string;
   secondarySlogan: string;
-}
+};
 
-interface HeroProps {
+// Default data
+const defaultSlides: SlideContent[] = [
+  {
+    image: "./images/210_2-1-copyright.webp",
+    primarySlogan: "Precision Repairs",
+    secondarySlogan: "Reliable Results",
+  },
+  {
+    image: "./images/210_2-2-copyright.webp",
+    primarySlogan: "Expert Hands",
+    secondarySlogan: "Honest Hearts",
+  },
+  {
+    image: "./images/210_2-3-copyright.webp",
+    primarySlogan: "Keeping You",
+    secondarySlogan: "Moving Forward",
+  },
+];
+
+const defaultNavLinks: NavLink[] = [
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
+type HeroProps = {
   slides?: SlideContent[];
   navLinks?: NavLink[];
-}
+};
 
-const Hero: React.FC<HeroProps> = ({
-  slides = [
-    {
-      image: "./images/210_2-1-copyright.webp",
-      primarySlogan: "Precision Repairs",
-      secondarySlogan: "Reliable Results",
-    },
-    {
-      image: "./images/210_2-2-copyright.webp",
-      primarySlogan: "Expert Hands",
-      secondarySlogan: "Honest Hearts",
-    },
-    {
-      image: "./images/210_2-3-copyright.webp",
-      primarySlogan: "Keeping You",
-      secondarySlogan: "Moving Forward",
-    },
-  ],
-  navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/services", label: "Services" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
-  ],
-}) => {
+const Hero = ({
+  slides = defaultSlides,
+  navLinks = defaultNavLinks,
+}: HeroProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -56,7 +62,7 @@ const Hero: React.FC<HeroProps> = ({
   const renderNavLinks = (isMobile = false) => (
     <ul className={isMobile ? "space-y-6" : "hidden md:flex space-x-8 text-lg"}>
       {navLinks.map((link) => (
-        <li key={link.href} className={isMobile ? "" : ""}>
+        <li key={link.href}>
           <Link
             href={link.href}
             className="block py-2 hover:text-primary"
@@ -74,7 +80,7 @@ const Hero: React.FC<HeroProps> = ({
       <nav className="absolute top-0 left-0 w-full mx-auto z-20 text-white">
         <div className="max-w-7xl lg:mx-auto mx-5 px-5 py-3 flex items-center justify-between">
           <div className="text-2xl font-bold">
-            <img src="/images/logo.svg" className="w-[100px] " />
+            <img src="/images/logo.svg" alt="Logo" className="w-[100px]" />
           </div>
           {renderNavLinks()}
           <div className="md:hidden">
@@ -84,7 +90,7 @@ const Hero: React.FC<HeroProps> = ({
               aria-label="Toggle mobile menu"
             >
               <svg
-                className={`${isMobileMenuOpen ? "h-0 w-0" : "h-6 w-6"} `}
+                className={`${isMobileMenuOpen ? "h-0 w-0" : "h-6 w-6"}`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -95,7 +101,7 @@ const Hero: React.FC<HeroProps> = ({
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M4 6h16M4 12h16m-7 6h7"
-                ></path>
+                />
               </svg>
             </button>
           </div>

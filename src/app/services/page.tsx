@@ -6,11 +6,7 @@ import {
   Thermometer,
   Battery,
   Car,
-  Zap,
-  Cpu,
-  CloudCog,
 } from "lucide-react";
-import { it } from "node:test";
 
 export default function Services() {
   const serviceDetails = [
@@ -122,7 +118,7 @@ export default function Services() {
   ];
   return (
     <div className="">
-      <Header title="Our Services" />
+      <Header />
       <div className="w-full mt-24">
         <div className="flex flex-col gap-10">
           <div className="flex flex-col gap-2  items-start lg:items-center justify-start  max-w-4xl lg:mx-auto mx-5 px-5 ">
@@ -176,7 +172,10 @@ export default function Services() {
             </h2>
             <div className="flex flex-col gap-7 max-w-6xl lg:mx-auto mx-5 px-5 ">
               {specialServices.map((item, index) => (
-                <div className="flex flex-col gap-3 border-solid border-separate border-primary p-4 rounded-lg shadow-xl bg- ">
+                <div
+                  key={index}
+                  className="flex flex-col gap-3 border-solid border-separate border-primary p-4 rounded-lg shadow-xl bg- "
+                >
                   <div className="flex items-center justify-start gap-3">
                     <span className="text-secondary ">{item.icon}</span>
                     <h3 className="text-primary md:text-2xl text-xl">

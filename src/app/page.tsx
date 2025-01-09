@@ -1,29 +1,31 @@
 import TestimonialsSlider from "@/components/Testimonials ";
 import Hero from "../components/Hero";
 import { Minus, CircleCheckBig } from "lucide-react";
-interface Featuers {
+
+type Features = {
   text: string;
-}
-interface HomeProps {
-  featuers1?: Featuers[];
-  featuers2?: Featuers[];
-}
-const Home: React.FC<HomeProps> = ({
-  featuers1 = [
-    { text: "Highly Professional Staff" },
-    { text: "100% Satisfaction Guarantee" },
-    { text: "Quality Control System" },
-    { text: "Price match promise" },
-    { text: "Safety recommendations" },
-  ],
-  featuers2 = [
-    { text: "Accourate Testing Process" },
-    { text: "Unrivalle Workmanship" },
-    { text: "Timely Delivery" },
-    { text: "Follow-up service calls" },
-    { text: "Strong community reputation" },
-  ],
-}) => {
+};
+
+const defaultFeatures1: Features[] = [
+  { text: "Highly Professional Staff" },
+  { text: "100% Satisfaction Guarantee" },
+  { text: "Quality Control System" },
+  { text: "Price match promise" },
+  { text: "Safety recommendations" },
+];
+
+const defaultFeatures2: Features[] = [
+  { text: "Accourate Testing Process" },
+  { text: "Unrivalle Workmanship" },
+  { text: "Timely Delivery" },
+  { text: "Follow-up service calls" },
+  { text: "Strong community reputation" },
+];
+
+export default function Home() {
+  const features1 = defaultFeatures1;
+  const features2 = defaultFeatures2;
+
   return (
     <div className="flex flex-col gap-24">
       <Hero />
@@ -67,7 +69,7 @@ const Home: React.FC<HomeProps> = ({
         </h1>
         <div className="flex md:flex-row flex-col md:gap-40 gap-10">
           <ul className="flex flex-col gap-10">
-            {featuers1.map((cur, index) => (
+            {features1.map((cur, index) => (
               <div key={index} className="flex gap-2">
                 <span className="text-secondary">
                   <CircleCheckBig />
@@ -77,7 +79,7 @@ const Home: React.FC<HomeProps> = ({
             ))}
           </ul>
           <ul className="flex flex-col gap-10">
-            {featuers2.map((cur, index) => (
+            {features2.map((cur, index) => (
               <div key={index} className="flex gap-2">
                 <span className="text-secondary">
                   <CircleCheckBig />
@@ -96,5 +98,4 @@ const Home: React.FC<HomeProps> = ({
       </div>
     </div>
   );
-};
-export default Home;
+}

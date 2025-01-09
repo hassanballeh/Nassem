@@ -1,60 +1,65 @@
 import Link from "next/link";
 import { MapPinned, Phone, Mail, Minus } from "lucide-react";
-interface QuickLink {
+
+// Types moved outside component
+type QuickLink = {
   href: string;
   label: string;
-}
-interface BranchAdress {
+};
+
+type BranchAddress = {
   icon: React.ReactNode;
-  text: string[];
-}
-interface BusinessHours {
+  text: string | string[];
+};
+
+type BusinessHours = {
   day: string;
   hour: string;
-}
-interface FooterProps {
-  quickLink?: QuickLink[];
-  branchAdress?: BranchAdress[];
-  businessHours?: BusinessHours[];
-}
-const Footer: React.FC<FooterProps> = ({
-  quickLink = [
-    { href: "/", label: "Home" },
-    { href: "/services", label: "Services" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
-  ],
-  branchAdress = [
-    {
-      icon: <MapPinned />,
-      text: "Mussfah - M2 - Abu Dhabi - UAE",
-    },
-    {
-      icon: <Mail />,
-      text: "support@example.com",
-    },
-    {
-      icon: <Phone />,
-      text: ["+971504469514 - +971567770661"],
-    },
-  ],
-  businessHours = [
-    {
-      day: "Sat - Thu",
-      hour: "9:00 am - 10:00 pm",
-    },
-    {
-      day: "Friday",
-      hour: "4:30 pm - 9:00 pm",
-    },
-  ],
-}) => {
+};
+
+// Default data
+const defaultQuickLinks: QuickLink[] = [
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
+const defaultBranchAddress: BranchAddress[] = [
+  {
+    icon: <MapPinned />,
+    text: "Mussfah - M2 - Abu Dhabi - UAE",
+  },
+  {
+    icon: <Mail />,
+    text: "support@example.com",
+  },
+  {
+    icon: <Phone />,
+    text: ["+971504469514 - +971567770661"],
+  },
+];
+
+const defaultBusinessHours: BusinessHours[] = [
+  {
+    day: "Sat - Thu",
+    hour: "9:00 am - 10:00 pm",
+  },
+  {
+    day: "Friday",
+    hour: "4:30 pm - 9:00 pm",
+  },
+];
+
+// Component definition
+const Footer = () => {
+  const quickLinks = defaultQuickLinks;
+  const branchAddress = defaultBranchAddress;
+  const businessHours = defaultBusinessHours;
+
   return (
     <div className="min-h-[90vh] w-full mt-24 bg-[#000] text-white">
-      <div
-        className="flex md:flex-row flex-col gap-7 justify-between h-full max-w-7xl lg:mx-auto mx-5 px-5 pt-10 pb-10 lg:pb-0
-      "
-      >
+      <div className="flex md:flex-row flex-col gap-7 justify-between h-full max-w-7xl lg:mx-auto mx-5 px-5 pt-10 pb-10 lg:pb-0">
         <div className="flex lg:flex-row flex-col md:w-[50%] lg:w-[60%] w-full gap-10">
           <div className="lg:w-[50%] w-full flex flex-col gap-5 ">
             <div className="">
@@ -78,8 +83,8 @@ const Footer: React.FC<FooterProps> = ({
                 </p>
               </div>
               <div className="flex flex-col gap-6">
-                <h1 className="text-2xl pb-3 text-primary">Cotact Info</h1>
-                {branchAdress.map((cur, index) => (
+                <h1 className="text-2xl pb-3 text-primary">Contact Info</h1>
+                {branchAddress.map((cur, index) => (
                   <div key={index} className="flex gap-7">
                     <span className="text-secondary">{cur.icon}</span>
                     <p className="text-white">{cur.text}</p>
@@ -100,7 +105,7 @@ const Footer: React.FC<FooterProps> = ({
             </div>
             <div className="flex flex-col gap-3">
               <h1 className="text-2xl pb-3 text-primary">Quick Links</h1>
-              {quickLink.map((cur, index) => (
+              {quickLinks.map((cur, index) => (
                 <div key={index} className="flex gap-3">
                   <span className="text-secondary">
                     <Minus />
@@ -132,4 +137,5 @@ const Footer: React.FC<FooterProps> = ({
     </div>
   );
 };
+
 export default Footer;

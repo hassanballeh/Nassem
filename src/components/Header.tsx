@@ -3,25 +3,23 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-interface NavLink {
+type NavLink = {
   href: string;
   label: string;
-}
+};
 
-interface HeaderProps {
-  navLink?: NavLink[];
-  title: string;
-}
+const defaultNavLinks: NavLink[] = [
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
 
-const Header: React.FC<HeaderProps> = ({
-  navLink = [
-    { href: "/", label: "Home" },
-    { href: "/services", label: "Services" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
-  ],
-  title,
-}) => {
+type HeaderProps = {
+  navLinks?: NavLink[];
+};
+
+const Header = ({ navLinks = defaultNavLinks }: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -30,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({
 
   const renderNavLinks = (isMobile = false) => (
     <ul className={isMobile ? "space-y-6" : "hidden md:flex space-x-8 text-lg"}>
-      {navLink.map((link) => (
+      {navLinks.map((link) => (
         <li key={link.href} className={isMobile ? "" : ""}>
           <Link
             href={link.href}
@@ -47,17 +45,17 @@ const Header: React.FC<HeaderProps> = ({
   const url = "./images/logo.svg";
 
   return (
-    <div className=" w-full  overflow-hidden">
-      <div className=" w-full">
-        <div className=" max-w-7xl lg:mx-auto mx-5 px-5 py-3 flex items-center justify-between">
+    <div className="w-full overflow-hidden">
+      <div className="w-full">
+        <div className="max-w-7xl lg:mx-auto mx-5 px-5 py-3 flex items-center justify-between">
           <div className="">
-            <img src={url} className=" w-[100px]" alt="Logo" />
+            <img src={url} className="w-[100px]" alt="Logo" />
           </div>
           {renderNavLinks()}
-          <div className="md:hidden z-[100] ">
+          <div className="md:hidden z-[100]">
             <button
               onClick={toggleMobileMenu}
-              className=" focus:outline-none z-50 text-secondary"
+              className="focus:outline-none z-50 text-secondary"
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             >
               {isMobileMenuOpen ? (
@@ -102,7 +100,7 @@ const Header: React.FC<HeaderProps> = ({
           {renderNavLinks(true)}
         </div>
       </div>
-      <p className=" absolute top-[120px] border-[2px] border-solid border-primary w-full"></p>
+      <p className="absolute top-[120px] border-[2px] border-solid border-primary w-full"></p>
     </div>
   );
 };

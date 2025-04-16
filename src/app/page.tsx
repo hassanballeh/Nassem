@@ -1,6 +1,6 @@
 import TestimonialsSlider from "@/components/Testimonials ";
 import Hero from "../components/Hero";
-import { Minus, CircleCheckBig } from "lucide-react";
+import { Minus, CircleCheckBig, Link } from "lucide-react";
 
 type Features = {
   text: string;
@@ -55,12 +55,12 @@ export default function Home() {
             smoothly. We combine technical expertise with state-of-the-art
             equipment to deliver superior mechanical repairs.
           </p>
-          <a
+          <Link
             href="/services"
-            className="relative w-[200px] text-center text-secondary  border-2 border-primary rounded px-4 py-2 inline cursor-pointer text-base font-bold before:bg-primary hover:rounded-b-none before:absolute before:-bottom-0 before:-left-0  before:block before:h-[4px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100"
+            className="relative w-[200px] text-center text-secondary border-2 border-primary rounded px-4 py-2 inline cursor-pointer text-base font-bold before:bg-primary hover:rounded-b-none before:absolute before:-bottom-0 before:-left-0 before:block before:h-[4px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100"
           >
             View All Services
-          </a>
+          </Link>
         </div>
       </div>
       <div className="max-w-7xl lg:mx-auto mx-5 px-5">

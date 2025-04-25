@@ -1,6 +1,8 @@
-import TestimonialsSlider from "@/components/Testimonials ";
+import TestimonialsSlider from "@/components/Testimonials";
 import Hero from "../components/Hero";
-import { Minus, CircleCheckBig, Link } from "lucide-react";
+import { Minus, CircleCheckBig } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 type Features = {
   text: string;
@@ -31,16 +33,19 @@ export default function Home() {
       <Hero />
       <div className="max-w-7xl lg:mx-auto mx-5 px-5  flex lg:flex-row flex-col gap-20">
         <div className="lg:block hidden">
-          <img
+          <Image
             className="lg:w-[700px]"
-            src="./images/technical-repairs-400x320.webp"
+            src="/images/technical-repairs-400x320.webp"
             alt="technical-repairs"
+            width={700}
+            height={320}
+            priority
           />
         </div>
-        <div className="flex  flex-col  gap-4">
-          <div className="flex gap-1 text-secondary text-2xl items-center  ">
+        <div className="flex flex-col gap-4">
+          <div className="flex gap-1 text-secondary text-2xl items-center">
             <Minus />
-            <h2>Welcome to Our workshop</h2>
+            <span className="font-semibold">Welcome to Our workshop</span>
           </div>
           <h1 className="text-primary text-4xl font-black">
             Committed to Give High Quality Repairing & Services
@@ -70,22 +75,22 @@ export default function Home() {
         <div className="flex md:flex-row flex-col md:gap-40 gap-10">
           <ul className="flex flex-col gap-10">
             {features1.map((cur, index) => (
-              <div key={index} className="flex gap-2">
+              <li key={index} className="flex gap-2">
                 <span className="text-secondary">
                   <CircleCheckBig />
                 </span>
                 <p className="text-xl text-[#797979]">{cur.text}</p>
-              </div>
+              </li>
             ))}
           </ul>
           <ul className="flex flex-col gap-10">
             {features2.map((cur, index) => (
-              <div key={index} className="flex gap-2">
+              <li key={index} className="flex gap-2">
                 <span className="text-secondary">
                   <CircleCheckBig />
                 </span>
                 <p className="text-xl  text-[#797979]">{cur.text}</p>
-              </div>
+              </li>
             ))}
           </ul>
         </div>

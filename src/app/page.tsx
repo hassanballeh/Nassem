@@ -45,17 +45,19 @@ export default function Home() {
         <div className="flex flex-col gap-4">
           <div className="flex gap-1 text-secondary text-2xl items-center">
             <Minus />
-            <span className="font-semibold">Welcome to Our workshop</span>
+            <span className="font-semibold text-secondary">
+              Welcome to Our workshop
+            </span>
           </div>
           <h1 className="text-primary text-4xl font-black">
             Committed to Give High Quality Repairing & Services
           </h1>
-          <p className="mb-5 text-[#797979] text-base">
+          <p className="mb-5 text-gray-600 text-base">
             Beat the Abu Dhabi heat with our professional AC maintenance and
             repair services. Our certified technicians ensure your vehicle's
             cooling system performs at its best when you need it most.
           </p>
-          <p className="text-[#797979] text-base">
+          <p className="text-gray-600 text-base">
             Trust our experienced mechanics to keep your vehicle running
             smoothly. We combine technical expertise with state-of-the-art
             equipment to deliver superior mechanical repairs.
@@ -79,7 +81,7 @@ export default function Home() {
                 <span className="text-secondary">
                   <CircleCheckBig />
                 </span>
-                <p className="text-xl text-[#797979]">{cur.text}</p>
+                <p className="text-xl text-gray-600">{cur.text}</p>
               </li>
             ))}
           </ul>
@@ -89,7 +91,7 @@ export default function Home() {
                 <span className="text-secondary">
                   <CircleCheckBig />
                 </span>
-                <p className="text-xl  text-[#797979]">{cur.text}</p>
+                <p className="text-xl text-gray-600">{cur.text}</p>
               </li>
             ))}
           </ul>

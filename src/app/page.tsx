@@ -40,6 +40,7 @@ export default function Home() {
             width={700}
             height={320}
             priority
+            unoptimized
           />
         </div>
         <div className="flex flex-col gap-4">
